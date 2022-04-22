@@ -1,6 +1,8 @@
 import base64
 import createCaptions
 import generateStories
+import speechStory
+import trans
 
 
 class Controller():
@@ -21,3 +23,14 @@ class Controller():
     def generateStory(self, captions):
         generateStories_obj = generateStories.generateStories()
         return generateStories_obj.generateStory(captions)
+
+    def speechStory(self, story, selectedLanguage):
+        translators = {'English': 'en-US-JennyNeural',
+                       'Urdu': 'ur-PK-AsadNeural'}
+        if selectedLanguage == 'Urdu':
+            trans_obj = trans.TextTranslator()
+            story = trans_obj.translateText(story)
+        print("translated text {}".format(story))
+        speechStory_obj = speechStory.speechStory(
+            translators[selectedLanguage])
+        speechStory_obj.generateSpeech(story)

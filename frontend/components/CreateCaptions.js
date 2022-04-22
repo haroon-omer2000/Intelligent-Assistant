@@ -3,6 +3,11 @@ import {View,Text,StyleSheet, TouchableOpacity, Image} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import DropDownPicker from 'react-native-dropdown-picker';
 
+//const ip = '192.168.18.63';
+//const ip = '172.17.60.110';
+const ip = '192.168.103.190';
+
+//const ip = '172.16.56.41'
 
 const CreateCaptions = ({handleSetLoading}) => {
 
@@ -51,7 +56,7 @@ const CreateCaptions = ({handleSetLoading}) => {
             selectedLanguage,
         };
 
-        const response = await fetch('http://192.168.18.25:5000/create_captions',{
+        const response = await fetch(`http://${ip}:5000/create_captions`,{
             method: "POST",
             headers: {
                 "Content-Type":"application/json"
@@ -107,7 +112,6 @@ const CreateCaptions = ({handleSetLoading}) => {
 
 const styles = StyleSheet.create({
     container : {
-        flex : 1,
         alignItems : 'center',
         justifyContent : 'center',
         flexDirection : 'column',
@@ -115,6 +119,7 @@ const styles = StyleSheet.create({
     uploadBtnContainer : {
         height : 200,
         width : 200,
+        marginTop: '20%',
         alignItems : 'center',
         justifyContent : 'center',
         borderStyle : 'dashed',
@@ -139,16 +144,15 @@ const styles = StyleSheet.create({
         backgroundColor : 'darkslateblue',
         color : 'white',
         borderRadius : 8,
+        marginBottom: 30
     },
     image : {
         height : '100%',
         width : '100%',
     },
     uploadStatus : {
-        backgroundColor : '#2e2e1f',
-        color : 'white',
-        borderRadius : 10,
-        padding : 15,
+        color : 'black',
+        padding : 20,
     },
     textWrapper : {
         flexDirection : 'row',

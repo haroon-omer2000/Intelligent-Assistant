@@ -4,11 +4,12 @@ import * as ImagePicker from 'expo-image-picker';
 import DropDownPicker from 'react-native-dropdown-picker'
 
 const ip = '192.168.103.190';
-//const ip = '172.17.60.110';
-//const ip = '192.168.18.63';
-//const ip = '172.16.56.41'
 
-const GenerateStories = ({handleSetLoading}) => {
+//const ip = '172.17.60.110';
+//const ip = '172.16.56.41'
+//const ip = '192.168.18.63';
+
+const SpeechStory = ({handleSetLoading}) => {
 
     const [image,setImage] = useState('');
     const [imageData,setImageData] = useState('');
@@ -59,7 +60,7 @@ const GenerateStories = ({handleSetLoading}) => {
             selectedLanguage
         };
 
-            const response = await fetch(`http://${ip}:5000/generate_stories`,{
+            const response = await fetch(`http://${ip}:5000/speech_story`,{
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json"
@@ -97,13 +98,13 @@ const GenerateStories = ({handleSetLoading}) => {
                     }
                 </TouchableOpacity>
                 { (image && uploadedImage ) ? 
-                    (<Text style = {styles.uploadIcon} onPress = {uploadImage} >Generate Story</Text>)
+                    (<Text style = {styles.uploadIcon} onPress = {uploadImage} >Generate Audio</Text>)
                     : null
                 }
                 {story ?
                     (
                         <View>
-                            <Text style = {styles.uploadIcon}>Generated Story</Text>
+                            <Text style = {styles.uploadIcon}>Generated Audio</Text>
                             <Text style = {styles.uploadStatus} >{story}</Text>
                         </View>
                     )
@@ -177,4 +178,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default GenerateStories;
+export default SpeechStory;

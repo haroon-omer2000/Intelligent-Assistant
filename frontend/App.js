@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View } from 'react-native';
 import Header from './components/Header';
 import CreateCaptions from './components/CreateCaptions';
 import GenerateStories from './components/GenerateStories';
@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './components/Home';
 import LoadingAnimation from './components/LoadingAnimation';
+import SpeechStory from './components/SpeechStory';
 
 const APP_NAME = "Intelligent Assistant";
 
@@ -18,12 +19,19 @@ function App() {
   const [useCases,setUseCases] = useState([
     { 
         id: 'createCaptions',
-        description:'Create Captions'
+        name: 'Describe A Picture',
+        description: "Upload any picture and read details about it!"
     },
     {
         id: 'generateStory',
-        description:'Generate Stories'
+        name: 'Read A Story',
+        description: "Upload any picture and read a creative fun story about it!"
     },
+    {
+      id: 'generateSpeech',
+      name: 'Listen To A Story',
+      description: "Upload any picture and listen to its fun story in your favorite language!"
+    }
   ]);
 
   const handleSetLoading = (status) =>{
@@ -37,8 +45,8 @@ function App() {
           <Header appName = {APP_NAME}/>
 
           <Stack.Navigator>
-
-            <Stack.Screen name = "Home" options = {{'title':'Choose A Use Case'}} >
+  
+            <Stack.Screen style={styles.temp} name = "Home" options = {{'title':'Welcome!','headerStyle':styles.header,'headerTitleAlign':'center', 'headerTitleStyle':styles.headercolor}} >
               {(props) => <Home useCases = {useCases} />}
             </Stack.Screen>
 
@@ -48,6 +56,10 @@ function App() {
 
             <Stack.Screen name = "generateStory" options = {{'title':'Generate Stories'}}>
               {(props) => <GenerateStories handleSetLoading = {handleSetLoading} />}
+            </Stack.Screen>
+
+            <Stack.Screen name = "generateSpeech" options = {{'title':'Story Speech'}}>
+              {(props) => <SpeechStory handleSetLoading = {handleSetLoading} />}
             </Stack.Screen>
 
           </Stack.Navigator>
@@ -75,7 +87,17 @@ const styles = StyleSheet.create({
   container: {
     flex : 1 ,
     paddingTop : 60,
+    backgroundColor:'#324aa8'
   },
+  temp: {
+    paddingTop: 100
+  },
+  header: {
+    backgroundColor:'#324aa8'
+  },
+  headercolor:{
+    color:'white'
+  }
 });
 
 

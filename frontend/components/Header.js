@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         height: 60,
         marginTop : Contants.statusBarHeight,
         paddingTop: 15,
-        backgroundColor: '#2e2e1f',
+        backgroundColor: '#324aa8',
     },
     text: {
         color: '#fff',
