@@ -11,7 +11,7 @@ TOOLS AND TECHNOLOGIES:
   
   For caption generation we have used vgg16 and lstm to make a sequence of inputs for our encoder decoder model that generates captions for the given     image. Model has been traines on flickr 8K dataset.In order to tain vgg16 model, we first send captions of images to LSTM model to generate         different caption sequences and send images to dense layer to convert them into vectors.Once done with seq and vector generation, we send the sequence and vector to vgg16 model for training and it predicts captions of image.
 
-  For story generation we simply fine tuned SimleT5 model for story generation. For fine tuning it, we extracted keywords from articles and used RCO stories 2016 version. We have keywords as source text and story as target text and send this as input for fine tuning.  
+  For story generation we simply fine tuned SimpleT5 model for story generation. For fine tuning it, we extracted keywords from articles and used RCO stories 2016 version. We have keywords as source text and story as target text and send this as input for fine tuning.  
 
   
 IMPLEMENTATION:
